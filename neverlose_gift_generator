@@ -1,0 +1,29 @@
+#include <ctime>
+#include <iostream>
+#include <process.h>
+
+std::string random_generator(const int len) {
+    static const char alpha_num[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz";
+
+    std::string tmp_s;
+
+    tmp_s.reserve(len);
+
+    for (int i = 0; i < len; ++i) {
+        tmp_s += alpha_num[rand() % (sizeof(alpha_num) - 1)];
+    }
+
+    return tmp_s;
+}
+
+int main(int argc, char* argv[]) {
+    srand((unsigned)time(NULL) * _getpid());
+
+    for (int  i  = 0; i  <  50; i++)
+        std::cout << "https://neverlose.cc/activate?code=" << random_generator(20) << std::endl;
+
+    return 0;
+}
